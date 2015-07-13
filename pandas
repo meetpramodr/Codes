@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Aug 05 16:05:13 2014
+
+@author: z063507
+"""
+
+import pandas as pd
+import numpy as np
+
+pima = pd.read_csv("C:\\Users\\Pramod\\Desktop\\playground\\pima.csv",index_col=0)
+
+pima.describe()
+pima["glu"].count()
+pima.mean()
+
+pima.shape
+
+pima[pima["glu"]>=110]
+
+pima[pima["glu"]>100].plot(kind="kde")
+
+pima["age"].hist()
+pima["skin"].plot(kind="kde")
+
+
+##########################################################
+s = pd.Series([1,2,4,np.NaN,"xx"])
+
+dates = pd.date_range(start='20130101', periods=6, freq='W')
+
+df = pd.DataFrame(np.random.randn(6,4),index=dates,columns=list('ABCD'))
+
+df.head(11)
+df.index
+
+##########################################################
+
+names = ["Mohan","Rohan","Sohan", "Aman" ,"Raman"]
+marks = [25,45,76,38,29]
+
+col_names = ["names","marks"]
+
+dataset1 = zip(names,marks)
+
+df_dataset1 = pd.DataFrame(data=dataset1,columns = col_names)
+
+writer = pd.ExcelWriter()
+df_dataset1.to_excel(sheet_name="sht",header=true,)
